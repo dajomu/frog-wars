@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectPad} from '../redux/actions/map';
+import {startTimer} from '../redux/actions/game';
 import Pad from '../map-components/Pad';
 import MapButton from '../map-components/Button';
 
@@ -12,6 +13,10 @@ class Map extends Component {
     this.state = {
       selectedPad: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.startTimer();
   }
 
   onPadClick = (padIndex) => {
@@ -48,7 +53,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectPad: bindActionCreators(selectPad, dispatch)
+    selectPad: bindActionCreators(selectPad, dispatch),
+    startTimer: bindActionCreators(startTimer, dispatch),
   }
 }
 
