@@ -8,6 +8,7 @@
   width: 800px;
   height: 400px;
   background: lightblue;
+  position: relative;
 }
 
 .Map-info {

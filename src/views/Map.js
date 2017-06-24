@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {selectPad} from '../redux/actions/map';
 import Pad from '../map-components/Pad';
 import MapButton from '../map-components/Button';
 
@@ -8,25 +11,17 @@ class Map extends Component {
     super(props);
     this.state = {
       selectedPad: false,
-      pads: [
-        {x:50, y:100, owner: 'green'},
-        {x:200, y:250, owner: 'none'},
-        {x:300, y:50, owner: 'red'},
-        {x:500, y:200, owner: 'none'},
-        {x:600, y:250, owner: 'none'},
-        {x:700, y:350, owner: 'red'},
-        {x:720, y:30, owner: 'yellow'},
-      ],
-
     };
   }
 
   onPadClick = (padIndex) => {
-    this.setState({selectedPad: padIndex});
+    this.props.selectPad(padIndex);
+    // this.setState({selectedPad: padIndex});
   }
 
   render() {
-    const {pads, selectedPad} = this.state;
+    // const {selectedPad} = this.state;
+    const {pads, selectedPad} = this.props;
     return (
       <div>
         <div className="Map-info">
@@ -43,4 +38,18 @@ class Map extends Component {
   }
 }
 
-export default Map;
+
+function mapStateToProps(state, props) {
+  return {
+    pads: state.pads,
+    ...state.map,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectPad: bindActionCreators(selectPad, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

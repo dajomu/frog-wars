@@ -20,7 +20,7 @@ class Pad extends Component {
       [`Pad--owned-${owner}`]: !!owner,
     });
     return (
-      <div style={{left:x, top:50 + y}} className={padClasses} onClick={onPadClick}>
+      <div style={{left:x, top:y}} className={padClasses} onClick={onPadClick}>
       </div>
     );
   }
