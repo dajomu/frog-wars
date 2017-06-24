@@ -76,6 +76,29 @@
   border: 2px solid purple;
 }
 
+.Ship {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.Ship--owned-green {
+  border-radius: 4px;
+  background: green;
+}
+
+.Ship--owned-yellow {
+  border-radius: 4px;
+  background: yellow;
+}
+
+.Ship--owned-red {
+  border-radius: 4px;
+  background: red;
+}
+
+
 /*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

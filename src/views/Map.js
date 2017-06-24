@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {selectPad} from '../redux/actions/map';
 import {startTimer} from '../redux/actions/game';
 import Pad from '../map-components/Pad';
+import Ship from '../map-components/Ship';
 import MapButton from '../map-components/Button';
 
 class Map extends Component {
@@ -24,7 +25,7 @@ class Map extends Component {
   }
 
   render() {
-    const {pads, selectedPad} = this.props;
+    const {pads, selectedPad, ships} = this.props;
     return (
       <div>
         <div className="Map-info">
@@ -35,6 +36,7 @@ class Map extends Component {
               key={`Pad-${i}`}
               isSelected={i === selectedPad} 
               onPadClick={() => this.onPadClick(i)}/>)}
+          {ships.map((ship, i) => <Ship {...ship}/>)}
         </div>
         <div className="Map-options">
           <MapButton />
@@ -49,6 +51,7 @@ class Map extends Component {
 function mapStateToProps(state, props) {
   return {
     pads: state.pads,
+    ships: state.ships,
     ...state.map,
   };
 }
