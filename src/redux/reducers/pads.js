@@ -1,5 +1,7 @@
 import * as types from '../actions/action-types';
 
+const max_population = 300;
+
 const initialPads = [
   {x:50, y:100, owner: 'green', population: 50},
   {x:200, y:250, owner: 'none'},
@@ -14,6 +16,13 @@ export default (state = initialPads, action) => {
   switch (action.type) {
     case types.ADD_PAD:
       return [...state, Object.assign({}, action.pad)];
+    case types.TIMER_TICK:
+      return state.map(pad => {
+        if(pad.population && pad.population < max_population) {
+          pad.population += 1;
+        }
+        return pad;
+      })
     default:
       return state;
   }

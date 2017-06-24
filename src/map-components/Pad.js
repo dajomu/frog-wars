@@ -13,14 +13,17 @@ class Pad extends Component {
   }
 
   render() {
-    const {isSelected, onPadClick, owner, x, y} = this.props;
+    const {isSelected, onPadClick, owner, population, x, y} = this.props;
     const padClasses = classNames({
       'Pad': true,
       'Pad--selected': isSelected,
       [`Pad--owned-${owner}`]: !!owner,
     });
     return (
-      <div style={{left:x, top:y}} className={padClasses} onClick={onPadClick}>
+      <div style={{left:x, top:y}} 
+        className={padClasses} 
+        onClick={onPadClick}>
+          {population}
       </div>
     );
   }

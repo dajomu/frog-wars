@@ -21,18 +21,20 @@ class Map extends Component {
 
   onPadClick = (padIndex) => {
     this.props.selectPad(padIndex);
-    // this.setState({selectedPad: padIndex});
   }
 
   render() {
-    // const {selectedPad} = this.state;
     const {pads, selectedPad} = this.props;
     return (
       <div>
         <div className="Map-info">
         </div>
         <div className="Map">
-          {pads.map((pad, i) => <Pad {...pad} isSelected={i === selectedPad} onPadClick={() => this.onPadClick(i)}/>)}
+          {pads.map((pad, i) => 
+            <Pad {...pad}
+              key={`Pad-${i}`}
+              isSelected={i === selectedPad} 
+              onPadClick={() => this.onPadClick(i)}/>)}
         </div>
         <div className="Map-options">
           <MapButton />
