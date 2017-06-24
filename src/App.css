@@ -1,6 +1,6 @@
 .App {
     width: 800px;
-    height: 400px;
+    height: 450px;
     margin: auto;
 }
 
@@ -10,16 +10,69 @@
   background: lightblue;
 }
 
+.Map-info {
+  width: 800px;
+  height: 50px;
+  display: flex;
+}
+
+.Map-options {
+  width: 800px;
+  height: 50px;
+  display: flex;
+}
+
+.Map-options--button-container {
+  border: 1px solid white;
+  flex: 1;
+}
+
+.Map-options--button {
+  border-left: 5px solid grey;
+  border-top: 5px solid lightgrey;
+  border-right: 5px solid grey;
+  border-bottom: 5px solid lightgrey;
+  height: 35px;
+}
+
 .Pad {
   width: 50px;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 30px;
   background-color: lightgreen;
-  position: relative;
+  position: absolute;
+}
+
+.Pad--owned-green::after {
+  content: "\2691";
+  color: green;
+  font-size: 20px;
+  line-height: 15px;
+  float: right;
+}
+
+.Pad--owned-red::after {
+  content: "\2691";
+  color: red;
+  font-size: 20px;
+  line-height: 15px;
+  float: right;
+}
+
+.Pad--owned-yellow::after {
+  content: "\2691";
+  color: yellow;
+  font-size: 20px;
+  line-height: 15px;
+  float: right;
 }
 
 .Pad:hover {
   border: 2px solid yellow;
+}
+
+.Pad--selected {
+  border: 2px solid purple;
 }
 
 /*.App-logo {
