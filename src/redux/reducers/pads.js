@@ -23,6 +23,13 @@ export default (state = initialPads, action) => {
         }
         return pad;
       })
+    case types.COLONIZE_PAD:
+      return state.map((pad, index) => {
+        if(action.target === index) {
+          return {...pad, owner: action.owner, population: 50};
+        }
+        return pad;
+      })
     default:
       return state;
   }

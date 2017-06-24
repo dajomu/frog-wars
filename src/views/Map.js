@@ -36,7 +36,9 @@ class Map extends Component {
               key={`Pad-${i}`}
               isSelected={i === selectedPad} 
               onPadClick={() => this.onPadClick(i)}/>)}
-          {ships.map((ship, i) => <Ship {...ship}/>)}
+          {ships.map((ship, i) => 
+            <Ship {...ship}
+              key={`Ship-${i}`}/>)}
         </div>
         <div className="Map-options">
           <MapButton />
