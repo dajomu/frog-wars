@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class MapButton extends Component {
 
@@ -9,12 +10,17 @@ class MapButton extends Component {
   }
 
   render() {
-    const {onButtonClick, text} = this.props;
+    const {isActive, onButtonClick, text} = this.props;
+    const buttonClasses = classNames({
+      'Map-options--button': true,
+      active: isActive,
+    });
+    
     return (
       <div className="Map-options--button-container">
-        <div className="Map-options--button" onClick={onButtonClick}>
+        <button className={buttonClasses} onClick={onButtonClick}>
           {text}
-        </div>
+        </button>
       </div>
     );
   }

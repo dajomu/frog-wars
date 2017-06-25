@@ -6,3 +6,10 @@ export const selectPad = (selectedPad) => {
     selectedPad,
   };
 }
+
+export const selectPadAction = (selectedPadAction) => {
+  return {
+    type: types.SELECT_PAD_ACTION,
+    selectedPadAction,
+  };
+}
