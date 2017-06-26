@@ -1,6 +1,5 @@
 import * as types from '../actions/action-types';
-
-const max_population = 300;
+import playerConfig from '../../config/players';
 
 const initialPads = [
   {x:50, y:100, owner: 'green', population: 50},
@@ -18,8 +17,11 @@ export default (state = initialPads, action) => {
       return [...state, Object.assign({}, action.pad)];
     case types.TIMER_TICK:
       return state.map(pad => {
-        if(pad.population && pad.population < max_population) {
-          pad.population += 1;
+        if(pad.owner !== 'none') {
+          const popSettings = playerConfig[pad.owner].population;
+          if(pad.population && pad.population < popSettings.max && action.gameTime % popSettings.growthRate === 0) {
+            pad.population += 1;
+          }
         }
         return pad;
       })

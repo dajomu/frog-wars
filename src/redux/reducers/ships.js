@@ -8,6 +8,8 @@ const initialShips = [
 
 export default (state = initialShips, action) => {
   switch (action.type) {
+    case types.ADD_SHIP:
+      return [...state, action.ship];
     case types.UPDATE_SHIPS:
       return action.ships;
     // case types.ADD_SHIP:

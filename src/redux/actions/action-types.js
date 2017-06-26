@@ -7,4 +7,5 @@ export const TIMER_START = 'TIMER_START';
 export const TIMER_TICK = 'TIMER_TICK';
 export const TIMER_STOP = 'TIMER_STOP';
 
+export const ADD_SHIP = 'ADD_SHIP';
 export const UPDATE_SHIPS = 'UPDATE_SHIPS';

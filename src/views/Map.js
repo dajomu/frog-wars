@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectPad, selectPadAction} from '../redux/actions/map';
+import {addShip} from '../redux/actions/ships';
 import {startTimer} from '../redux/actions/game';
 import Pad from '../map-components/Pad';
 import Ship from '../map-components/Ship';
@@ -21,7 +22,15 @@ class Map extends Component {
   }
 
   onPadClick = (padIndex) => {
-    this.props.selectPad(padIndex);
+    const {addShip, pads, selectedPad, selectedPadAction} = this.props;
+    if (this.props.selectedPad !== -1 && this.props.selectedPadAction !== 'none') {
+      // do action... need to do x, y , owner
+      const {x, y, owner} = pads[selectedPad];
+      addShip(x, y, owner, selectedPadAction, padIndex);
+      this.props.selectPad(-1);
+    } else {
+      this.props.selectPad(padIndex);
+    }
   }
 
   onButtonClick = (buttonAction) => {
@@ -70,6 +79,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    addShip: bindActionCreators(addShip, dispatch),
     selectPad: bindActionCreators(selectPad, dispatch),
     selectPadAction: bindActionCreators(selectPadAction, dispatch),
     startTimer: bindActionCreators(startTimer, dispatch),

@@ -1,6 +1,7 @@
 import * as types from './action-types';
 let timer = null;
 const timerRate = 1000;
+let gameTime = 0;
 
 export const startTimer = () => (dispatch) => {
   clearInterval(timer);
@@ -9,7 +10,7 @@ export const startTimer = () => (dispatch) => {
   dispatch(tick());
 }
 
-const tick = (pads) => {return { type: types.TIMER_TICK, pads }};
+const tick = () => {gameTime++; return { type: types.TIMER_TICK, gameTime }};
 
 export const stopTimer = () => {
   clearInterval(timer);

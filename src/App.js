@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from './views/Map';
-import logo from './logo.svg';
+import MusicPlayer from './game-components/musicPlayer'
 import './App.css';
 
 class App extends Component {
@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Map />
+        <MusicPlayer />
       </div>
     );
   }
